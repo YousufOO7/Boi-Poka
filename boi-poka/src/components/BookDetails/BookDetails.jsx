@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToStoredReadList } from '../../Utility/AddToLocal';
 
 const BookDetails = props => {
     const { bookId } = useParams();
@@ -8,6 +9,13 @@ const BookDetails = props => {
     const id = parseInt(bookId);
     const book = data.find(book => book.bookId === id);
     const { bookId: currentBookId, bookName, author, image, category, tags, rating, review, totalPages, publisher, yearOfPublishing } = book;
+
+
+
+    const markRead = id => {
+        addToStoredReadList(id)
+        console.log('butn has been clicked')
+    }
 
     return (
         <div>
@@ -34,7 +42,9 @@ const BookDetails = props => {
                         <p>Year of publishing: <b>{yearOfPublishing}</b></p>
                         <p>Rating: <b>{rating}</b></p>  
                         <div className='flex gap-5 mt-5'>
-                        <button className="btn btn-outline btn-accent">Read</button>    
+                        <button 
+                        onClick={() => markRead(bookId)}
+                        className="btn btn-outline btn-accent">Read</button>    
                         <button className="btn bg-[#23BE0A] text-white">Wish To List</button>    
                         </div> 
                     </div>
