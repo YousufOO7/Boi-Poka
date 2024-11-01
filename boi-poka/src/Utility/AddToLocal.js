@@ -21,4 +21,30 @@ const addToStoredReadList = id => {
     }
 }
 
-export {getToLocalStore, addToStoredReadList}
+
+const getToStoredLocal = () => {
+    const storedList = localStorage.getItem('wish-list');
+    if(storedList){
+        const storedListStr = JSON.parse(storedList)
+        return storedListStr;
+    }
+    else{
+        return [];
+    }
+}
+
+
+const addToWishListLocal = id => {
+    const storedList = getToStoredLocal();
+    if(storedList.includes(id)){
+        console.log(id, "this book is already in the list");
+    }
+    else{
+        storedList.push(id);
+        const storedListStr = JSON.stringify(storedList);
+        localStorage.setItem('wish-list', storedListStr);
+    }
+}
+
+
+export { addToStoredReadList, addToWishListLocal}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { addToStoredReadList } from '../../Utility/AddToLocal';
+import { addToStoredReadList, addToWishListLocal } from '../../Utility/AddToLocal';
 
 const BookDetails = props => {
     const { bookId } = useParams();
@@ -13,8 +13,11 @@ const BookDetails = props => {
 
 
     const markRead = id => {
-        addToStoredReadList(id)
-        console.log('butn has been clicked')
+        addToStoredReadList(id);
+    }
+
+    const wishToAdd = id => {
+        addToWishListLocal(id);
     }
 
     return (
@@ -45,7 +48,9 @@ const BookDetails = props => {
                         <button 
                         onClick={() => markRead(bookId)}
                         className="btn btn-outline btn-accent">Read</button>    
-                        <button className="btn bg-[#23BE0A] text-white">Wish To List</button>    
+                        <button 
+                        onClick={() => wishToAdd(id)}
+                        className="btn bg-[#23BE0A] text-white">Wish To List</button>    
                         </div> 
                     </div>
                 </div>
