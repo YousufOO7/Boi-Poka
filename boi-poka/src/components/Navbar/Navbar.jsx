@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import "./Navbar.css";
 
 const Navbar = props => {
 
     const link = <>
         <li><NavLink to="/"><a>Home</a></NavLink></li>
         <li><NavLink to="/book-list"><a>Book list</a></NavLink></li>
+        <li><NavLink to="/chart-list"><a>Chart list</a></NavLink></li>
     </>
 
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <div tabIndex={0} role="" className=" lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -34,7 +36,7 @@ const Navbar = props => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Boi Poka</a>
+                <a className=" text-xl">Boi Poka</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
